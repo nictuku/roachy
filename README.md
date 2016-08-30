@@ -14,3 +14,5 @@ What I've done:
 3. Tuned my vim settings thanks to `proton`
 4. Tuned stream settings again to fix the fonts. Solution: don't downscale the video.
 5. created the table
+6. Made basic log insertion work!
+7. Working on a geoDB integration so we can show a map of users querying the DHT
