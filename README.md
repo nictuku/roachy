@@ -12,3 +12,5 @@ What I've done:
 1. Copied the example code from http://github.com/nictuku/dht and started to adapt it to my needs
 2. Tuned my stream settings thanks to livecodingtv :)
 3. Tuned my vim settings thanks to `proton`
+4. Tuned stream settings again to fix the fonts. Solution: don't downscale the video.
+5. created the table
