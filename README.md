@@ -10,4 +10,5 @@ Plan:
 What I've done:
 
 1. Copied the example code from http://github.com/nictuku/dht and started to adapt it to my needs
-2. 
+2. Tuned my stream settings thanks to livecodingtv :)
+3. Tuned my vim settings thanks to `proton`
