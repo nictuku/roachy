@@ -13,6 +13,6 @@ What I've done:
 2. Tuned my stream settings thanks to livecodingtv :)
 3. Tuned my vim settings thanks to `proton`
 4. Tuned stream settings again to fix the fonts. Solution: don't downscale the video.
-5. created the table
+5. Created the table
 6. Made basic log insertion work!
-7. Working on a geoDB integration so we can show a map of users querying the DHT
+7. Resolving geo location based on the request IP address (city, country, latitude, longitude), using this data set: http://dev.maxmind.com/geoip/geoip2/geolite2/

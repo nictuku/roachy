@@ -9,6 +9,7 @@ import (
 	"fmt"
 
 	"github.com/nictuku/dht"
+	"github.com/nictuku/roachy/geo"
 
 	_ "github.com/lib/pq"
 )
@@ -31,9 +32,17 @@ type logger struct {
 }
 
 func (l *logger) GetPeers(addr net.UDPAddr, nodeID string, infoHash dht.InfoHash) {
+	node := fmt.Sprintf("%x", nodeID)
+	ip := addr.IP.String()
+	lat, long := geolookup.LatLong(ip)
+	city, country := geolookup.CityCountry(ip)
 	if _, err := l.db.Exec(
-		"INSERT INTO get_peers_log (infohash, node, address, time) VALUES ($1, $2, $3, $4))", infoHash.String(), nodeID, addr.String(), time.Now()); err != nil {
+		"INSERT INTO get_peers_log (infohash, node, address, time, city, country, latitude, longitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+		infoHash.String(), node, ip, time.Now(), city, country, lat, long); err != nil {
 		log.Printf("Error inserting into database: %v", err)
+		return
 	}
-	log.Printf("insert addr %v, infohash %x", addr.String(), infoHash)
+	log.Printf("insert addr %v, infohash %v", ip, infoHash)
+	log.Printf("city: %v, country: %v", city, country)
+	log.Printf("latitude: %v, longitude: %v", lat, long)
 }

@@ -32,7 +32,12 @@ func main() {
 		os.Exit(1)
 	}
 	// Starts a DHT node with the default options. It picks a random UDP port. To change this, see dht.NewConfig.
-	d, err := dht.New(nil)
+	opt := dht.NewConfig()
+	// Reduce memory requirements.
+	opt.MaxInfoHashes = 10
+	opt.MaxInfoHashPeers = 10
+
+	d, err := dht.New(opt)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "New DHT error: %v", err)
 		os.Exit(1)
@@ -40,7 +45,10 @@ func main() {
 	}
 
 	// This will write to the database eventually.
-	d.Logger = &logger{}
+	if d.Logger, err = newDBLogger(); err != nil {
+		fmt.Fprintf(os.Stderr, "Cant create logger: %v", err)
+		os.Exit(1)
+	}
 
 	// For debugging.
 	go http.ListenAndServe(fmt.Sprintf(":%d", httpPortTCP), nil)
