@@ -16,3 +16,5 @@ What I've done:
 5. Created the table
 6. Made basic log insertion work!
 7. Resolving geo location based on the request IP address (city, country, latitude, longitude), using this data set: http://dev.maxmind.com/geoip/geoip2/geolite2/
+
+Thanks to lv tv folks: jtryon, salver, r00tkiller, crazycoder666
